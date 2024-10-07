@@ -19,7 +19,7 @@ export const MBTIProfileBox = () => {
   ]
 
   return (
-    <div className="flex h-full flex-col justify-between p-7 tracking-wide text-white xl:p-4">
+    <div className="flex h-full flex-col justify-between p-4 tracking-wide text-white sm:p-7 xl:p-4">
       <div>
         {traits.map((trait, index) => (
           <TraitBar key={index} trait={trait.name} percentage={trait.percentage} />

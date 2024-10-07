@@ -10,6 +10,7 @@ import spotifyAlbum3 from '@/assets/spotify_mamasboy.jpeg'
 import spotifyAlbum4 from '@/assets/spotify_nicole.jpeg'
 import { MBTIProfileBox } from './mbti'
 import { Globe } from 'lucide-react'
+import { SmileyIcon } from './icons'
 
 export const BentoGrid = () => {
   return (
@@ -19,13 +20,13 @@ export const BentoGrid = () => {
         <div className="row-span-2 flex flex-col items-center justify-between rounded-xl bg-[#F51672] py-8">
           <div className="h-5 w-5 rounded-full bg-white"></div>
           <div className="flex flex-col items-center gap-2 text-white">
-            <div className="text-7xl">☺</div>
+            <SmileyIcon className="h-20 w-20 stroke-none" />
             <div className="text-4xl font-bold tracking-wide">GABY</div>
           </div>
         </div>
 
         {/* LinkedIn Box */}
-        <div className="bg-white-200 flex aspect-square flex-col justify-between rounded-xl border border-gray-200 bg-white p-7 xl:p-5">
+        <div className="bg-white-200 flex aspect-square flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 sm:p-7 xl:p-5">
           <div className="flex flex-col">
             <img src={linkedinIcon} alt="LinkedIn" className="mb-2 h-8 w-8" />
             <div className="font-semibold text-gray-800">linkedin.com</div>
@@ -47,7 +48,7 @@ export const BentoGrid = () => {
         </div>
 
         {/* Github */}
-        <div className="bg-white-200 col-start-2 row-start-2 flex aspect-square flex-col justify-between rounded-xl border border-gray-200 bg-white p-7 xl:p-5">
+        <div className="bg-white-200 col-start-2 row-start-2 flex aspect-square flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 sm:p-7 xl:p-5">
           <div className="flex flex-col">
             <img src={githubIcon} alt="Github" className="mb-2 h-8 w-8" />
             <div className="font-semibold text-gray-800">github.com</div>
@@ -81,7 +82,7 @@ export const BentoGrid = () => {
         </div>
 
         {/* Spotify */}
-        <div className="col-span-2 flex aspect-[2/1] items-center justify-between rounded-xl border border-gray-200 bg-white p-8 xl:aspect-auto xl:px-5 xl:py-4">
+        <div className="col-span-2 flex aspect-[2/1] items-center justify-between rounded-xl border border-gray-200 bg-white p-5 sm:p-8 xl:aspect-auto xl:px-5 xl:py-4">
           <div className="flex h-full flex-col items-start justify-between">
             <div className="flex flex-col items-start">
               <img src={spotifyIcon} alt="Spotify" className="mb-1 h-10 w-10" />
