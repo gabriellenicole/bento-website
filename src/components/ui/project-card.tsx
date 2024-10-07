@@ -3,6 +3,8 @@ import { motion, MotionValue, MotionStyle, useMotionTemplate, useMotionValue } f
 import clsx from 'clsx'
 import { useIsMobile } from '@/lib/utils'
 import { Badge } from './badge'
+import { FigmaIcon, GithubIcon } from './icons'
+import { Globe } from 'lucide-react'
 
 interface CardProps {
   title: string
@@ -10,6 +12,9 @@ interface CardProps {
   techStack?: string[]
   bgClass?: string
   children?: React.ReactNode
+  githubUrl?: string
+  figmaUrl?: string
+  deploymentUrl?: string
 }
 
 type WrapperStyle = MotionStyle & {
@@ -17,7 +22,16 @@ type WrapperStyle = MotionStyle & {
   '--y': MotionValue<string>
 }
 
-function FeatureCard({ title, description, techStack, bgClass, children }: CardProps) {
+function FeatureCard({
+  title,
+  description,
+  techStack,
+  bgClass,
+  children,
+  githubUrl,
+  figmaUrl,
+  deploymentUrl,
+}: CardProps) {
   const [mounted, setMounted] = useState(false)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -54,7 +68,26 @@ function FeatureCard({ title, description, techStack, bgClass, children }: CardP
       >
         <div className="m-6 min-h-[330px] w-full sm:m-10 md:min-h-[450px]">
           <div className="flex w-5/6 flex-col gap-3">
-            <h2 className="text-xl font-bold tracking-tight md:text-xl">{title}</h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold tracking-tight md:text-xl">{title}</h2>
+              <div className="flex items-center gap-2">
+                {githubUrl && (
+                  <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                    <GithubIcon className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
+                  </a>
+                )}
+                {figmaUrl && (
+                  <a href={figmaUrl} target="_blank" rel="noopener noreferrer">
+                    <FigmaIcon className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
+                  </a>
+                )}
+                {deploymentUrl && (
+                  <a href={deploymentUrl} target="_blank" rel="noopener noreferrer">
+                    <Globe className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
+                  </a>
+                )}
+              </div>
+            </div>
             <p className="text-sm leading-5 text-zinc-600 sm:text-base sm:leading-7">
               {description}
             </p>

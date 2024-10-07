@@ -3,7 +3,7 @@ import Hero from '@/components/section/hero'
 import Projects from './components/section/projects'
 export default function App() {
   return (
-    <div className="flex flex-col items-center justify-center bg-white text-neutral-800">
+    <div className="mx-auto flex max-w-7xl flex-col items-center justify-center bg-white text-neutral-800">
       <Hero />
       <Projects />
       <Contact />
