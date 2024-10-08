@@ -1,6 +1,6 @@
 import React from 'react'
 import locationMap from '@/assets/singapore.png'
-import linkedinIcon from '@/assets/linkedin.png'
+import readcvIcon from '@/assets/readcv.svg'
 import githubIcon from '@/assets/github.png'
 import spotifyIcon from '@/assets/spotify.png'
 import cafeImage from '@/assets/cafe.png'
@@ -48,16 +48,16 @@ export const BentoGrid = () => {
         {/* LinkedIn Box */}
         <BentoBox className="flex aspect-square flex-col justify-between p-4 text-sm sm:p-7 sm:text-base xl:p-5">
           <div className="flex flex-col">
-            <img src={linkedinIcon} alt="LinkedIn" className="mb-2 h-8 w-8" />
-            <div className="font-semibold text-gray-800">linkedin.com</div>
-            <div className="text-xs text-gray-600 sm:text-sm">gabrielle-nicole</div>
+            <img src={readcvIcon} alt="LinkedIn" className="mb-2 h-8 w-8" />
+            <div className="font-semibold text-gray-800">read.cv</div>
+            <div className="text-xs text-gray-600 sm:text-sm">gabriellenicole</div>
           </div>
           <a
-            href="https://www.linkedin.com/in/gabrielle-nicole/"
-            className="-mr-1 ml-auto rounded-full border border-sky-600 bg-white px-3 py-1 text-xs font-semibold text-sky-600 transition-colors hover:bg-blue-50 sm:text-sm"
+            href="https://read.cv/gabriellenicole"
+            className="-mr-1 ml-auto rounded-full border border-gray-600 bg-white px-3 py-1 text-xs font-semibold text-neutral-800 transition-colors hover:bg-gray-50 sm:text-sm"
             target="_blank"
           >
-            Connect
+            View
           </a>
         </BentoBox>
 
