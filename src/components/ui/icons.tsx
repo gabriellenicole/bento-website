@@ -1,10 +1,11 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
-
 interface IconProps {
   className?: string
   size?: number
   onClick?: () => void
+  url?: string
+  aTagClassName?: string
 }
 
 const BaseIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = ({
@@ -12,9 +13,11 @@ const BaseIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = ({
   size = 50,
   children,
   onClick,
+  url,
+  aTagClassName,
   ...props
 }) => {
-  return (
+  const svgContent = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
@@ -31,6 +34,18 @@ const BaseIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = ({
       {children}
     </svg>
   )
+
+  // If URL is provided, wrap the SVG in an anchor tag
+  if (url) {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer" className={aTagClassName}>
+        {svgContent}
+      </a>
+    )
+  }
+
+  // If no URL, return the SVG as is
+  return svgContent
 }
 
 export const TelegramIcon: React.FC<IconProps> = (props) => (

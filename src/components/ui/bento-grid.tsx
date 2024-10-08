@@ -52,19 +52,21 @@ export const BentoGrid = () => {
             <div className="font-semibold text-gray-800">linkedin.com</div>
             <div className="text-xs text-gray-600 sm:text-sm">gabrielle-nicole</div>
           </div>
-          <button
+          <a
+            href="https://www.linkedin.com/in/gabrielle-nicole/"
             className="-mr-1 ml-auto rounded-full border border-sky-600 bg-white px-3 py-1 text-xs font-semibold text-sky-600 transition-colors hover:bg-blue-50 sm:text-sm"
-            onClick={() => window.open('https://www.linkedin.com/in/gabrielle-nicole/', '_blank')}
+            target="_blank"
           >
             Connect
-          </button>
+          </a>
         </BentoBox>
 
         {/* Location */}
         <BentoBox className="relative col-span-2 row-span-2 aspect-square p-0">
           <img src={locationMap} alt="Location" className="h-full w-full rounded-xl object-cover" />
-          <span className="absolute left-1/2 top-1/2 h-4 w-4 animate-[ping_1.5s_ease-in-out_infinite] rounded-full bg-blue-400 opacity-75"></span>
-          <span className="absolute left-1/2 top-1/2 h-4 w-4 rounded-full border-2 bg-blue-500"></span>
+          <span className="absolute left-1/2 top-1/2 h-6 w-6 origin-bottom-right -translate-x-1/2 -translate-y-1/2 animate-[ping_1.5s_ease-in-out_infinite] rounded-full bg-blue-400 opacity-75"></span>
+          <span className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-blue-500"></span>
+
           <div className="absolute bottom-4 left-6 rounded-lg border border-gray-300 bg-white bg-opacity-75 px-2 py-1 text-sm text-neutral-800 xl:bottom-2 xl:left-4">
             📍 Based in Singapore
           </div>
@@ -77,12 +79,13 @@ export const BentoGrid = () => {
             <div className="font-semibold text-gray-800">github.com</div>
             <div className="text-xs text-gray-600 sm:text-sm">gabriellenicole</div>
           </div>
-          <button
+          <a
+            href="https://github.com/gabriellenicole"
             className="-mr-1 ml-auto rounded-full border border-gray-600 bg-white px-3 py-1 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-50 sm:text-sm"
-            onClick={() => window.open('https://github.com/gabriellenicole', '_blank')}
+            target="_blank"
           >
             Follow
-          </button>
+          </a>
         </BentoBox>
 
         <BentoBox className="col-span-2 flex aspect-[2/1] flex-col justify-between rounded-xl bg-[#74F4F3] p-7 xl:aspect-auto">
@@ -115,17 +118,13 @@ export const BentoGrid = () => {
               <h2 className="text-md font-semibold text-gray-800 sm:text-lg">spotify</h2>
               <p className="text-xs text-gray-600 sm:text-sm">gabriellenicole</p>
             </div>
-            <button
+            <a
+              href="https://open.spotify.com/user/gabriellenicole03?si=2b595576092f4cb6"
               className="rounded-full border border-[#00DB4D] bg-white px-3 py-1 text-xs font-semibold text-[#00DB4D] transition-colors hover:bg-[#00DB4D] hover:bg-opacity-10 sm:text-sm"
-              onClick={() =>
-                window.open(
-                  'https://open.spotify.com/user/gabriellenicole03?si=2b595576092f4cb6',
-                  '_blank',
-                )
-              }
+              target="_blank"
             >
               Follow
-            </button>
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-3">

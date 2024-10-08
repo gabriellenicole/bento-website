@@ -11,20 +11,24 @@ export default function Contact() {
       </h2>
       <div className="flex items-center gap-8">
         <TelegramIcon
-          className="w-8 lg:w-20"
-          onClick={() => window.open('https://t.me/gabriellenicole', '_blank')}
+          className="w-8 cursor-pointer lg:w-20"
+          url="https://t.me/gabriellenicole"
+          aTagClassName="z-30"
         />
         <GmailIcon
-          className="w-8 lg:w-20"
-          onClick={() => window.open('mailto:gabrielle.nicole03@gmail.com', '_blank')}
+          className="w-8 cursor-pointer lg:w-20"
+          url="mailto:gabrielle.nicole03@gmail.com"
+          aTagClassName="z-30"
         />
         <InstagramIcon
-          className="w-8 lg:w-20"
-          onClick={() => window.open('https://www.instagram.com/gabriellenicolees/', '_blank')}
+          className="w-8 cursor-pointer lg:w-20"
+          url="https://www.instagram.com/gabriellenicole/"
+          aTagClassName="z-30"
         />
         <LinkedInIcon
-          className="w-8 lg:w-20"
-          onClick={() => window.open('https://www.linkedin.com/in/gabrielle-nicole/', '_blank')}
+          className="w-8 cursor-pointer lg:w-20"
+          url="https://www.linkedin.com/in/gabrielle-nicole/"
+          aTagClassName="z-30"
         />
       </div>
     </BackgroundLines>
