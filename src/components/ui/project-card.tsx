@@ -119,7 +119,7 @@ export function ImageCard({ image, ...props }: ImageCardProps) {
       <>
         <img
           alt={image.alt}
-          className="pointer-events-none left-[69px] top-[79%] w-[42%] scale-[150%] rounded-xl bg-neutral-50/30 transition-transform duration-500 max-md:rounded-sm sm:left-[40px] sm:top-[60%] sm:scale-100 md:-bottom-[1%] md:top-auto md:w-[69%] md:scale-100 md:group-hover:translate-x-2 md:group-hover:scale-95 xl:-bottom-[11%]"
+          className="pointer-events-none left-[69px] top-[84%] w-[42%] scale-[150%] rounded-xl bg-neutral-50/30 transition-transform duration-500 max-md:rounded-sm sm:left-[40px] sm:top-[60%] sm:scale-100 md:-bottom-[1%] md:top-auto md:w-[69%] md:scale-100 md:group-hover:translate-x-2 md:group-hover:scale-95 xl:-bottom-[11%]"
           src={image.src1}
           style={{
             position: 'absolute',
@@ -130,7 +130,7 @@ export function ImageCard({ image, ...props }: ImageCardProps) {
 
         <img
           alt={image.alt}
-          className="pointer-events-none left-[50%] top-[79%] w-[50%] translate-x-0 scale-[190%] rounded-2xl bg-neutral-50/30 backdrop-blur-sm transition-transform duration-500 max-md:rounded-md sm:left-[39%] sm:top-[59%] sm:scale-[120%] md:-bottom-[2%] md:top-auto md:w-[77%] md:scale-100 md:group-hover:-translate-x-2 md:group-hover:scale-105 xl:-bottom-[12%]"
+          className="pointer-events-none left-[50%] top-[84%] w-[50%] translate-x-0 scale-[190%] rounded-2xl bg-neutral-50/30 backdrop-blur-sm transition-transform duration-500 max-md:rounded-md sm:left-[39%] sm:top-[59%] sm:scale-[120%] md:-bottom-[2%] md:top-auto md:w-[77%] md:scale-100 md:group-hover:-translate-x-2 md:group-hover:scale-105 xl:-bottom-[12%]"
           src={image.src2}
           style={{
             position: 'absolute',

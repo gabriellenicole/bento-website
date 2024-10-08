@@ -43,8 +43,6 @@ const projects = [
     techStack: [
       'Machine Learning',
       'Python',
-      'Pandas',
-      'NumPy',
       'XGBoost',
       'Naive Bayes',
       'Decision Tree',
