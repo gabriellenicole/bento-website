@@ -1,8 +1,8 @@
 const TraitBar = ({ trait, percentage }: { trait: string; percentage: number }) => (
   <div className="mb-2">
     <div className="mb-2 flex flex-col justify-between">
-      <span className="text-md font-semibold">{trait}</span>
-      <span className="text-sm font-medium leading-tight opacity-80">{percentage}%</span>
+      <span className="text-sm font-semibold sm:text-lg">{trait}</span>
+      <span className="text-xs font-medium leading-tight opacity-80 sm:text-sm">{percentage}%</span>
     </div>
     <div className="h-1.5 w-full rounded-full bg-purple-700">
       <div className="h-1.5 rounded-full bg-white" style={{ width: `${percentage}%` }}></div>
@@ -26,8 +26,8 @@ export const MBTIProfileBox = () => {
         ))}
       </div>
       <div className="text-right">
-        <p className="text-xl">my mbti</p>
-        <p className="text-3xl font-bold">INFJ</p>
+        <p className="text-sm sm:text-xl">my mbti</p>
+        <p className="text-xl font-bold sm:text-3xl">INFJ</p>
       </div>
     </div>
   )

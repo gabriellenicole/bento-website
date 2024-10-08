@@ -10,10 +10,22 @@ export default function Contact() {
         something <span className="font-serif italic">cool</span> together!
       </h2>
       <div className="flex items-center gap-8">
-        <TelegramIcon className="w-8 lg:w-20" />
-        <GmailIcon className="w-8 lg:w-20" />
-        <InstagramIcon className="w-8 lg:w-20" />
-        <LinkedInIcon className="w-8 lg:w-20" />
+        <TelegramIcon
+          className="w-8 lg:w-20"
+          onClick={() => window.open('https://t.me/gabriellenicole', '_blank')}
+        />
+        <GmailIcon
+          className="w-8 lg:w-20"
+          onClick={() => window.open('mailto:gabrielle.nicole03@gmail.com', '_blank')}
+        />
+        <InstagramIcon
+          className="w-8 lg:w-20"
+          onClick={() => window.open('https://www.instagram.com/gabriellenicolees/', '_blank')}
+        />
+        <LinkedInIcon
+          className="w-8 lg:w-20"
+          onClick={() => window.open('https://www.linkedin.com/in/gabrielle-nicole/', '_blank')}
+        />
       </div>
     </BackgroundLines>
   )

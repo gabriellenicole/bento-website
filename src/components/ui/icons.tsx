@@ -4,12 +4,14 @@ import React from 'react'
 interface IconProps {
   className?: string
   size?: number
+  onClick?: () => void
 }
 
 const BaseIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = ({
   className,
   size = 50,
   children,
+  onClick,
   ...props
 }) => {
   return (
@@ -23,6 +25,7 @@ const BaseIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = ({
         'z-30 cursor-text stroke-neutral-800 transition-transform duration-300 ease-in-out hover:scale-110 hover:cursor-pointer',
         className,
       )}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -125,9 +128,9 @@ export const SmileyIcon: React.FC<IconProps> = (props) => (
     <path
       d="M38.1056 66.9043C53.8895 66.9043 66.6848 54.1089 66.6848 38.3251C66.6848 22.5412 53.8895 9.74585 38.1056 9.74585C22.3217 9.74585 9.52637 22.5412 9.52637 38.3251C9.52637 54.1089 22.3217 66.9043 38.1056 66.9043Z"
       stroke="white"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M27.3883 35.9435C29.3613 35.9435 30.9607 34.3441 30.9607 32.3711C30.9607 30.3981 29.3613 28.7987 27.3883 28.7987C25.4153 28.7987 23.8159 30.3981 23.8159 32.3711C23.8159 34.3441 25.4153 35.9435 27.3883 35.9435Z"
@@ -140,9 +143,9 @@ export const SmileyIcon: React.FC<IconProps> = (props) => (
     <path
       d="M50.4899 45.47C49.2308 47.639 47.4242 49.4393 45.2508 50.6908C43.0774 51.9423 40.6135 52.601 38.1055 52.601C35.5976 52.601 33.1336 51.9423 30.9602 50.6908C28.7868 49.4393 26.9802 47.639 25.7212 45.47"
       stroke="white"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </BaseIcon>
 )
@@ -156,9 +159,9 @@ export const GithubIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = (
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
     >
       <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -176,9 +179,9 @@ export const FigmaIcon: React.FC<React.SVGProps<SVGSVGElement> & IconProps> = ({
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
     >
       <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />

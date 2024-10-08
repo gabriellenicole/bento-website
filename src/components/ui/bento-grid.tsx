@@ -46,13 +46,16 @@ export const BentoGrid = () => {
         </BentoBox>
 
         {/* LinkedIn Box */}
-        <BentoBox className="flex aspect-square flex-col justify-between sm:p-7 xl:p-5">
+        <BentoBox className="flex aspect-square flex-col justify-between p-4 text-sm sm:p-7 sm:text-base xl:p-5">
           <div className="flex flex-col">
             <img src={linkedinIcon} alt="LinkedIn" className="mb-2 h-8 w-8" />
             <div className="font-semibold text-gray-800">linkedin.com</div>
-            <div className="text-sm text-gray-600">gabrielle-nicole</div>
+            <div className="text-xs text-gray-600 sm:text-sm">gabrielle-nicole</div>
           </div>
-          <button className="-mr-1 ml-auto rounded-full border border-sky-600 bg-white px-3 py-1 text-sm font-semibold text-sky-600 transition-colors hover:bg-blue-50">
+          <button
+            className="-mr-1 ml-auto rounded-full border border-sky-600 bg-white px-3 py-1 text-xs font-semibold text-sky-600 transition-colors hover:bg-blue-50 sm:text-sm"
+            onClick={() => window.open('https://www.linkedin.com/in/gabrielle-nicole/', '_blank')}
+          >
             Connect
           </button>
         </BentoBox>
@@ -68,13 +71,16 @@ export const BentoGrid = () => {
         </BentoBox>
 
         {/* Github */}
-        <BentoBox className="bg-white-200 col-start-2 row-start-2 flex aspect-square flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 sm:p-7 xl:p-5">
+        <BentoBox className="bg-white-200 col-start-2 row-start-2 flex aspect-square flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 text-sm sm:p-7 sm:text-base xl:p-5">
           <div className="flex flex-col">
             <img src={githubIcon} alt="Github" className="mb-2 h-8 w-8" />
             <div className="font-semibold text-gray-800">github.com</div>
-            <div className="text-sm text-gray-600">gabriellenicole</div>
+            <div className="text-xs text-gray-600 sm:text-sm">gabriellenicole</div>
           </div>
-          <button className="-mr-1 ml-auto rounded-full border border-gray-600 bg-white px-3 py-1 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50">
+          <button
+            className="-mr-1 ml-auto rounded-full border border-gray-600 bg-white px-3 py-1 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-50 sm:text-sm"
+            onClick={() => window.open('https://github.com/gabriellenicole', '_blank')}
+          >
             Follow
           </button>
         </BentoBox>
@@ -102,14 +108,22 @@ export const BentoGrid = () => {
         </BentoBox>
 
         {/* Spotify */}
-        <BentoBox className="col-span-2 flex aspect-[2/1] items-center justify-between rounded-xl border border-gray-200 bg-white p-5 sm:p-8 xl:aspect-auto xl:px-5 xl:py-4">
+        <BentoBox className="col-span-2 flex aspect-[2/1] items-center justify-between rounded-xl border border-gray-200 bg-white p-5 text-sm sm:p-8 sm:text-base xl:aspect-auto xl:px-5 xl:py-4">
           <div className="flex h-full flex-col items-start justify-between">
             <div className="flex flex-col items-start">
               <img src={spotifyIcon} alt="Spotify" className="mb-1 h-10 w-10" />
-              <h2 className="text-lg font-semibold text-gray-800">spotify</h2>
-              <p className="text-sm text-gray-600">gabriellenicole</p>
+              <h2 className="text-md font-semibold text-gray-800 sm:text-lg">spotify</h2>
+              <p className="text-xs text-gray-600 sm:text-sm">gabriellenicole</p>
             </div>
-            <button className="rounded-full border border-[#00DB4D] bg-white px-3 py-1 text-sm font-semibold text-[#00DB4D] transition-colors hover:bg-[#00DB4D] hover:bg-opacity-10">
+            <button
+              className="rounded-full border border-[#00DB4D] bg-white px-3 py-1 text-xs font-semibold text-[#00DB4D] transition-colors hover:bg-[#00DB4D] hover:bg-opacity-10 sm:text-sm"
+              onClick={() =>
+                window.open(
+                  'https://open.spotify.com/user/gabriellenicole03?si=2b595576092f4cb6',
+                  '_blank',
+                )
+              }
+            >
               Follow
             </button>
           </div>
@@ -118,22 +132,22 @@ export const BentoGrid = () => {
             <img
               src={spotifyAlbum1}
               alt="Album cover"
-              className="h-20 w-20 rounded-xl xl:h-16 xl:w-16"
+              className="h-16 w-16 rounded-xl sm:h-20 sm:w-20 xl:h-16 xl:w-16"
             />
             <img
               src={spotifyAlbum2}
               alt="Album cover"
-              className="h-20 w-20 rounded-xl xl:h-16 xl:w-16"
+              className="h-16 w-16 rounded-xl sm:h-20 sm:w-20 xl:h-16 xl:w-16"
             />
             <img
               src={spotifyAlbum3}
               alt="Album cover"
-              className="h-20 w-20 rounded-xl xl:h-16 xl:w-16"
+              className="h-16 w-16 rounded-xl sm:h-20 sm:w-20 xl:h-16 xl:w-16"
             />
             <img
               src={spotifyAlbum4}
               alt="Album cover"
-              className="h-20 w-20 rounded-xl xl:h-16 xl:w-16"
+              className="h-16 w-16 rounded-xl sm:h-20 sm:w-20 xl:h-16 xl:w-16"
             />
           </div>
         </BentoBox>
