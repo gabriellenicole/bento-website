@@ -64,11 +64,11 @@ function FeatureCard({
     >
       <div
         className={clsx(
-          'group relative w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-neutral-50/90 to-neutral-100/90 transition duration-300',
+          'group relative w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-neutral-50/90 to-neutral-100/90 pb-32 transition duration-300 md:pb-5',
           'md:hover:border-transparent',
         )}
       >
-        <div className="m-6 min-h-[330px] w-full sm:m-10 md:min-h-[450px]">
+        <div className="m-6 w-full sm:m-10 md:min-h-[450px]">
           <div className="flex w-5/6 flex-col gap-3">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold tracking-tight md:text-xl">{title}</h2>
