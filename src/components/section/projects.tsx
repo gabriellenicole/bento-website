@@ -3,6 +3,8 @@ import pintuAppFront from '@/assets/projects/pintu_app_1.png'
 import pintuAppBack from '@/assets/projects/pintu_app_2.png'
 import spotifyFront from '@/assets/projects/spotify_1.png'
 import spotifyBack from '@/assets/projects/spotify_2.png'
+import mlFront from '@/assets/projects/ml_1.png'
+import mlBack from '@/assets/projects/ml_2.png'
 
 const projects = [
   {
@@ -17,6 +19,7 @@ const projects = [
     },
     deploymentUrl: 'https://app.pintusingapura.org',
     figmaUrl: 'https://bit.ly/pintu-app-figma',
+    bgClass: 'bg-pintu',
   },
   {
     title: 'JamStream',
@@ -31,6 +34,30 @@ const projects = [
     githubUrl: 'https://github.com/aftanza/DIP-Group-4',
     figmaUrl:
       'https://www.figma.com/design/gMIQ6WEVMcx6wvEDuRvBZ2/app-features-rough-draft?node-id=71-3474&t=aEqdiWd3V13V9GxV-1',
+    bgClass: 'bg-jamstream',
+  },
+  {
+    title: 'Spotify Songs: HIT or FLOP?',
+    description:
+      'Predicting if a song is inside hitlist, based on its feature, and analyzing the most important feature to predict hitlist songs',
+    techStack: [
+      'Machine Learning',
+      'Python',
+      'Pandas',
+      'NumPy',
+      'XGBoost',
+      'Naive Bayes',
+      'Decision Tree',
+      'Random Forest',
+    ],
+    image: {
+      src1: mlBack,
+      src2: mlFront,
+      alt: 'Spotify Songs: HIT or FLOP?',
+    },
+    githubUrl:
+      'https://github.com/gabriellenicole/spotify-hitlist/blob/main/IE0005_MiniProject_SpotifyHitPredictor.ipynb',
+    bgClass: 'bg-spotify',
   },
 ]
 

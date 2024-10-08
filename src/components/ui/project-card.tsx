@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion, MotionValue, MotionStyle, useMotionTemplate, useMotionValue } from 'framer-motion'
 import clsx from 'clsx'
-import { useIsMobile } from '@/lib/utils'
+import { cn, useIsMobile } from '@/lib/utils'
 import { Badge } from './badge'
 import { FigmaIcon, GithubIcon } from './icons'
 import { Globe } from 'lucide-react'
@@ -50,7 +50,10 @@ function FeatureCard({
 
   return (
     <motion.div
-      className="animated-feature-cards relative w-full drop-shadow-[0_0_15px_rgba(49,49,49,0.2)] transition-all duration-300 hover:scale-[1.02]"
+      className={cn(
+        'animated-feature-cards relative w-full drop-shadow-[0_0_15px_rgba(49,49,49,0.2)] transition-all duration-300 hover:scale-[1.02]',
+        bgClass,
+      )}
       onMouseMove={handleMouseMove}
       style={
         {
@@ -63,7 +66,6 @@ function FeatureCard({
         className={clsx(
           'group relative w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-neutral-50/90 to-neutral-100/90 transition duration-300',
           'md:hover:border-transparent',
-          bgClass,
         )}
       >
         <div className="m-6 min-h-[330px] w-full sm:m-10 md:min-h-[450px]">
