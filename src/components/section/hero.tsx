@@ -12,7 +12,7 @@ export default function Hero() {
           <p className="text-base font-light tracking-wide xl:text-lg">
             currently learning something{' '}
             <span className="animate-pulse font-mono font-semibold italic">new</span> everyday in
-            frontend dev, AI, and cloud! 🤓 📚
+            frontend dev, gen AI, and cloud! 🤓
           </p>
           <p className="text-base font-light xl:text-lg">
             always eager to connect with <span className="font-serif italic">creative people</span>{' '}
