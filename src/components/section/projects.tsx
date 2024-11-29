@@ -11,7 +11,7 @@ const projects = [
     title: 'PINTU App',
     description:
       'A web application to support day-to-day events for an Indonesians Association in Singapore',
-    techStack: ['React', 'TypeScript', 'SaaS', 'Figma', 'Adobe Illustrator'],
+    techStack: ['React', 'TypeScript', 'Sass', 'Figma', 'Adobe Illustrator'],
     image: {
       src1: pintuAppBack,
       src2: pintuAppFront,
