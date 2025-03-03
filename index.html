@@ -12,5 +12,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.__intellihub = {
+        chatbotId: 'db7ab5ee-4b4e-453e-9fa4-e59b33f456c2', // Replace with your actual chatbot ID for testing
+      }
+      ;(function (d) {
+        var s = d.createElement('script')
+        s.src = 'http://localhost:3000/api/embed'
+        s.async = true
+        d.head.appendChild(s)
+      })(document)
+    </script>
   </body>
 </html>
