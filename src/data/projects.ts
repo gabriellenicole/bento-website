@@ -24,8 +24,6 @@ export const projects = [
       src2: intellihubBack,
       alt: 'PINTU App',
     },
-    deploymentUrl: 'https://app.pintusingapura.org',
-    figmaUrl: 'https://bit.ly/pintu-app-figma',
     bgClass: 'bg-intellihub',
     content: intellihubContent,
   },
