@@ -5,8 +5,10 @@ import { cn, useIsMobile } from '@/lib/utils'
 import { Badge } from './badge'
 import { FigmaIcon, GithubIcon } from './icons'
 import { Globe } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 interface CardProps {
+  id: string;
   title: string
   description: string
   techStack?: string[]
@@ -23,6 +25,7 @@ type WrapperStyle = MotionStyle & {
 }
 
 function FeatureCard({
+  id,
   title,
   description,
   techStack,
@@ -49,59 +52,76 @@ function FeatureCard({
   }, [])
 
   return (
-    <motion.div
-      className={cn(
-        'animated-feature-cards relative w-full drop-shadow-[0_0_15px_rgba(49,49,49,0.2)] transition-all duration-300 hover:scale-[1.02]',
-        bgClass,
-      )}
-      onMouseMove={handleMouseMove}
-      style={
-        {
-          '--x': useMotionTemplate`${mouseX}px`,
-          '--y': useMotionTemplate`${mouseY}px`,
-        } as WrapperStyle
-      }
-    >
-      <div
-        className={clsx(
-          'group relative w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-neutral-50/90 to-neutral-100/90 pb-32 transition duration-300 md:pb-5',
-          'md:hover:border-transparent',
+    <Link to={`/project/${id}`} className="block">
+      <motion.div
+        className={cn(
+          'animated-feature-cards relative w-full drop-shadow-[0_0_15px_rgba(49,49,49,0.2)] transition-all duration-300',
+          bgClass,
         )}
+        onMouseMove={handleMouseMove}
+        style={
+          {
+            '--x': useMotionTemplate`${mouseX}px`,
+            '--y': useMotionTemplate`${mouseY}px`,
+          } as WrapperStyle
+        }
       >
-        <div className="m-6 w-full sm:m-10 md:min-h-[450px]">
-          <div className="flex w-5/6 flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold tracking-tight md:text-xl">{title}</h2>
-              <div className="flex items-center gap-2">
-                {githubUrl && (
-                  <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                    <GithubIcon className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
-                  </a>
-                )}
-                {figmaUrl && (
-                  <a href={figmaUrl} target="_blank" rel="noopener noreferrer">
-                    <FigmaIcon className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
-                  </a>
-                )}
-                {deploymentUrl && (
-                  <a href={deploymentUrl} target="_blank" rel="noopener noreferrer">
-                    <Globe className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
-                  </a>
-                )}
+        <div
+          className={clsx(
+            'group relative w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-neutral-50/90 to-neutral-100/90 pb-32 transition duration-300 md:pb-5',
+            'md:hover:border-transparent',
+          )}
+        >
+          <div className="m-6 w-full sm:m-10 md:min-h-[450px]">
+            <div className="flex w-5/6 flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold tracking-tight md:text-xl">{title}</h2>
+                <div className="flex items-center gap-2">
+                  {githubUrl && (
+                    <a 
+                      href={githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <GithubIcon className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
+                    </a>
+                  )}
+                  {figmaUrl && (
+                    <a 
+                      href={figmaUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <FigmaIcon className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
+                    </a>
+                  )}
+                  {deploymentUrl && (
+                    <a 
+                      href={deploymentUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Globe className="h-6 w-6 cursor-pointer rounded-full border border-gray-300 p-1 transition-all duration-300 hover:bg-neutral-800 hover:bg-opacity-10 md:h-8 md:w-8 md:border-none md:p-2" />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p className="text-sm leading-5 text-zinc-600 sm:text-base sm:leading-7">
+                {description}
+              </p>
+              <div className="my-3 flex flex-wrap gap-2">
+                {techStack?.map((tech) => <Badge key={tech}>{tech}</Badge>)}
               </div>
             </div>
-            <p className="text-sm leading-5 text-zinc-600 sm:text-base sm:leading-7">
-              {description}
-            </p>
-            <div className="my-3 flex flex-wrap gap-2">
-              {techStack?.map((tech) => <Badge key={tech}>{tech}</Badge>)}
-            </div>
-          </div>
 
-          {mounted ? children : null}
+            {mounted ? children : null}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   )
 }
 

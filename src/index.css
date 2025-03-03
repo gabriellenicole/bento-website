@@ -97,6 +97,16 @@ h6 {
   }
 }
 
+.bg-intellihub::before {
+  background: radial-gradient(
+    1000px circle at var(--x) var(--y),
+    #8D51FF 0,
+    #5D0FC0 25%,
+    rgba(255, 255, 255, 0) 50%,
+    transparent 80%
+  );
+}
+
 .bg-pintu::before {
   background: radial-gradient(
     1000px circle at var(--x) var(--y),
