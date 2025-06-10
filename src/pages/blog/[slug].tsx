@@ -3,17 +3,15 @@ import { blogPosts } from '@/data/blog'
 import Markdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import { useEffect } from 'react'
+import { useScrollRestoration } from '@/lib/utils'
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
   const post = blogPosts.find((p) => p.slug === slug)
 
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  // Use the scroll restoration hook
+  useScrollRestoration()
 
   if (!post) {
     return (

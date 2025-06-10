@@ -4,16 +4,14 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { projects } from '@/data/projects'
 import { ArrowLeft } from 'lucide-react'
-import { useEffect } from 'react'
+import { useScrollRestoration } from '@/lib/utils'
 
 export default function ProjectDetails() {
   const { projectId } = useParams<{ projectId: string }>()
   const navigate = useNavigate()
 
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // Use the scroll restoration hook
+  useScrollRestoration()
 
   const project = projects.find((p) => p.id === projectId)
 

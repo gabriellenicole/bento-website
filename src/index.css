@@ -23,6 +23,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Prevent scroll during restoration */
+body.disable-scroll {
+  overflow: hidden;
+}
+
 img,
 picture,
 video,
