@@ -1,10 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import { blogPosts } from '@/data/blog'
 import { BlogCard } from '@/components/ui/blog-card'
+import { useEffect } from 'react'
 
 export default function BlogIndex() {
   const navigate = useNavigate()
   const sortedPosts = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date))
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-6 py-16 sm:px-8 md:py-24">
