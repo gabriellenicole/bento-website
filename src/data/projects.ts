@@ -6,6 +6,8 @@ import mlFront from '@/assets/projects/ml_1.png'
 import mlBack from '@/assets/projects/ml_2.png'
 import intellihubFront from '@/assets/projects/intellihub_1.png'
 import intellihubBack from '@/assets/projects/intellihub_2.png'
+import intellihubWidget from '@/assets/projects/intellihub/widget.png'
+import intellihubScrape from '@/assets/projects/intellihub/scrape.png'
 
 // Import markdown content as raw strings
 import intellihubContent from '@/data/markdown/intellihub-ai.md?raw'
@@ -13,25 +15,43 @@ import pintuAppContent from '@/data/markdown/pintu-app.md?raw'
 import jamstreamContent from '@/data/markdown/jamstream.md?raw'
 import spotifyHitPredictorContent from '@/data/markdown/spotify-hit-predictor.md?raw'
 
-export const projects = [
+export type Project = {
+  id: string
+  title: string
+  description: string
+  techStack: string[]
+  image: { src1: string; src2: string; alt: string }
+  // extra screenshots shown under the write-up
+  shots?: { src: string; caption: string }[]
+  deploymentUrl?: string
+  githubUrl?: string
+  figmaUrl?: string
+  bgClass: string
+  content: string
+}
+
+export const projects: Project[] = [
   {
     id: 'intellihub-ai',
     title: 'intellihub.ai',
-    description: 'a scalable AI-powered chatbot widget deployment',
+    description: 'turn your docs into a chatbot that actually knows your stuff',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI', 'Prompt Engineering'],
     image: {
       src1: intellihubFront,
       src2: intellihubBack,
-      alt: 'PINTU App',
+      alt: 'intellihub.ai',
     },
+    shots: [
+      { src: intellihubWidget, caption: 'the chat widget, living on someone’s site' },
+      { src: intellihubScrape, caption: 'feeding it a website' },
+    ],
     bgClass: 'bg-intellihub',
     content: intellihubContent,
   },
   {
     id: 'pintu-app',
     title: 'PINTU App',
-    description:
-      'a web application to support day-to-day events for an Indonesians Association in Singapore',
+    description: 'events, payments & voting for indonesian students in singapore, in one app',
     techStack: ['React', 'TypeScript', 'Sass', 'Figma', 'Adobe Illustrator'],
     image: {
       src1: pintuAppBack,
@@ -46,8 +66,7 @@ export const projects = [
   {
     id: 'jamstream',
     title: 'JamStream',
-    description:
-      'a Spotify clone with group session feature, where users can create rooms, listen to music together, and chat in real-time',
+    description: 'listen to the same song, at the same second, with your friends (plus chat)',
     techStack: ['React Native', 'TypeScript', 'Tailwind CSS', 'Spotify API', 'Firebase'],
     image: {
       src1: spotifyBack,
@@ -63,15 +82,15 @@ export const projects = [
   {
     id: 'spotify-hit-predictor',
     title: 'Spotify Songs: HIT or FLOP?',
-    description:
-      'predicting if a song is inside hitlist, based on its feature, and analyzing the most important feature to predict hitlist songs',
+    description: 'can a computer tell a hit song from a flop? kind of!',
     techStack: [
-      'Machine Learning',
       'Python',
+      'Machine Learning',
+      'Random Forest',
       'XGBoost',
       'Naive Bayes',
       'Decision Tree',
-      'Random Forest',
+      'Logistic Regression',
     ],
     image: {
       src1: mlBack,

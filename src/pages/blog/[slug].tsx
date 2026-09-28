@@ -1,70 +1,55 @@
-import { useParams, useNavigate } from 'react-router-dom'
-import { blogPosts } from '@/data/blog'
+import { Link, useParams } from 'react-router-dom'
 import Markdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import { useScrollRestoration } from '@/lib/utils'
+import { blogPosts } from '@/data/blog'
+import { formatDate, useScrollRestoration } from '@/lib/utils'
+import { NotFound, SubpageShell } from '@/components/gaby/subpage'
+import { proseClass } from '@/components/gaby/prose'
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
-  const navigate = useNavigate()
-  const post = blogPosts.find((p) => p.slug === slug)
-
-  // Use the scroll restoration hook
   useScrollRestoration()
 
-  if (!post) {
-    return (
-      <div className="flex min-h-[50vh] flex-col items-center justify-center">
-        <h1 className="mb-4 text-2xl font-bold">Post not found</h1>
-        <button
-          onClick={() => navigate('/')}
-          className="rounded-lg bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800 transition-all hover:bg-neutral-200 hover:shadow-sm"
-        >
-          Back to home
-        </button>
-      </div>
-    )
-  }
+  const sorted = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date))
+  const index = sorted.findIndex((p) => p.slug === slug)
+  const post = sorted[index]
+  if (!post) return <NotFound what="post" />
+
+  const next = sorted[(index + 1) % sorted.length]
 
   return (
-    <main className="mx-auto min-h-screen max-w-3xl px-6 py-16 sm:px-8 md:py-24">
-      <nav className="mb-12">
-        <button
-          onClick={() => navigate('/')}
-          className="group inline-flex items-center gap-2 rounded-lg bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800 transition-all hover:bg-neutral-200 hover:shadow-sm"
-        >
-          <span className="transition-transform group-hover:-translate-x-0.5">←</span>
-          Back to home
-        </button>
-      </nav>
-
-      <article className="prose prose-neutral max-w-none">
-        <header className="not-prose mb-12">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">{post.title}</h1>
-          <div className="flex items-center gap-3 text-sm text-neutral-600">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            {post.author && (
-              <>
-                <span>·</span>
-                <span>{post.author}</span>
-              </>
-            )}
-          </div>
+    <SubpageShell back={{ to: '/blog', label: 'all posts' }}>
+      <article className="mx-auto max-w-2xl px-5 pb-16 pt-10 sm:pt-16">
+        <header className="mb-12 border-b border-dashed border-ink/20 pb-10 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-ink/50">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            {post.author && <> · {post.author.toLowerCase()}</>}
+          </p>
+          <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl">
+            {post.title}
+          </h1>
+          <p className="mt-3 font-hand text-2xl text-cobalt">{post.summary}</p>
         </header>
 
-        <div className="prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-2xl prose-h3:text-xl prose-p:text-neutral-700 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-1 prose-code:py-0.5 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none">
+        <div className={proseClass}>
           <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
             {post.content}
           </Markdown>
         </div>
       </article>
-    </main>
+
+      {next.slug !== post.slug && (
+        <section className="mx-auto max-w-2xl px-5 pb-24">
+          <Link
+            to={`/blog/${next.slug}`}
+            className="group block rounded-3xl bg-sky-soft px-7 py-8 transition-transform hover:-translate-y-1"
+          >
+            <p className="font-mono text-[11px] uppercase tracking-widest text-ink/60">read next</p>
+            <p className="mt-1 font-serif text-3xl group-hover:text-cobalt">{next.title} →</p>
+          </Link>
+        </section>
+      )}
+    </SubpageShell>
   )
 }

@@ -1,33 +1,28 @@
 import { Link } from 'react-router-dom'
 import { BlogCover } from './blog-cover'
 import type { BlogPost } from '@/data/blog'
+import { formatDate } from '@/lib/utils'
 
 export function BlogCard({ post, colorIndex }: { post: BlogPost; colorIndex: number }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="group flex h-full flex-col rounded-2xl bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md"
+      className="group flex h-full flex-col rounded-3xl bg-paper p-5 transition-transform duration-300 hover:-translate-y-1"
     >
       <BlogCover title={post.title} colorIndex={colorIndex} />
 
-      <div className="flex flex-1 flex-col">
-        <h3 className="mb-2 text-xl font-bold tracking-tight transition-colors group-hover:text-blue-600">
-          {post.title}
-        </h3>
-
-        <time className="mb-3 text-sm text-neutral-500" dateTime={post.date}>
-          {new Date(post.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
+      <div className="flex flex-1 flex-col gap-2 px-1">
+        <time
+          className="font-mono text-[11px] uppercase tracking-widest text-ink/50"
+          dateTime={post.date}
+        >
+          {formatDate(post.date)}
         </time>
-
-        <p className="mb-4 line-clamp-3 flex-1 text-base text-neutral-600">{post.summary}</p>
-
-        <span className="inline-flex items-center gap-1 font-medium text-blue-600">
-          Continue Reading{' '}
-          <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>
+        <h3 className="font-serif text-3xl leading-tight group-hover:text-cobalt">{post.title}</h3>
+        <p className="line-clamp-3 flex-1 text-ink/70">{post.summary}</p>
+        <span className="mt-2 font-mono text-[11px] uppercase tracking-widest text-cobalt">
+          read it{' '}
+          <span className="inline-block transition-transform group-hover:translate-x-1" aria-hidden>
             →
           </span>
         </span>

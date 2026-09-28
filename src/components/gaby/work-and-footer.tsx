@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { projects } from '@/data/projects'
 import { blogPosts } from '@/data/blog'
-import { socials } from '@/data/me'
+import { socials, writingNote } from '@/data/me'
 import { Asterisk } from './doodles'
 
 export function WorkCorner() {
@@ -43,10 +43,7 @@ export function WorkCorner() {
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink/60">
               things i wrote
             </p>
-            <p className="mb-3 mt-1 font-hand text-xl leading-tight text-ink/60">
-              i just think it&apos;s cool to document thoughts. full honesty: AI helps with all of
-              it. i&apos;m the world&apos;s worst writer, sadly.
-            </p>
+            <p className="mb-3 mt-1 font-hand text-xl leading-tight text-ink/60">{writingNote}</p>
             <ul>
               {posts.map((p) => (
                 <li key={p.slug}>

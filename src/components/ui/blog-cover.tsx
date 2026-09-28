@@ -1,28 +1,27 @@
-const COLORS = [
-  'from-sky-200 to-sky-300', // blue
-  'from-purple-200 to-purple-300', // purple
-  'from-pink-100 to-pink-200', // pink
-  'from-yellow-100 to-yellow-200', // yellow
-  'from-green-100 to-green-200', // green
-]
+import { cn } from '@/lib/utils'
+
+// a little striped "notebook cover" per post, all in the blue family
+const PATTERNS = ['stripes', 'grid-paper bg-paper', 'stripes-diag bg-sky-soft', 'bg-cobalt']
+const TILTS = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2']
 
 export function BlogCover({ title, colorIndex = 0 }: { title: string; colorIndex?: number }) {
-  const gradientColor = COLORS[colorIndex % COLORS.length]
+  const i = colorIndex % PATTERNS.length
 
   return (
     <div
-      className={`relative mb-6 flex h-40 w-full flex-col items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${gradientColor}`}
+      className={cn(
+        'relative mb-6 flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl border border-ink/10',
+        PATTERNS[i],
+      )}
     >
-      {/* Decorative elements */}
-      <div className="absolute -left-4 -top-4 h-16 w-16 rounded-full bg-white/20" />
-      <div className="absolute -bottom-8 -right-8 h-24 w-24 rounded-full bg-white/20" />
-
-      {/* Content */}
-      <div className="z-10 px-4 text-center">
-        <h3 className="text-2xl font-bold text-neutral-800">{title}</h3>
-        <div className="mt-2 flex items-center justify-center gap-2">
-          <span className="text-sm font-medium text-neutral-700">✦ gabrielle nicole</span>
-        </div>
+      <div
+        className={cn(
+          'max-w-[80%] bg-paper px-5 py-3 text-center shadow-[0_8px_20px_-10px_rgba(21,23,31,0.4)] transition-transform duration-300 group-hover:rotate-0',
+          TILTS[i],
+        )}
+      >
+        <p className="font-serif text-2xl leading-tight text-ink">{title}</p>
+        <p className="mt-1 font-hand text-lg text-cobalt">by gaby (+ a little AI)</p>
       </div>
     </div>
   )
