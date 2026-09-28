@@ -1,6 +1,16 @@
 // everything that makes the homepage "gaby" lives here, so it's easy to edit.
 import cafe from '@/assets/cafe.png'
 import sunset from '@/assets/sunset.png'
+import profileFront from '@/assets/profile_front.jpeg'
+import profileBack from '@/assets/profile_back.jpeg'
+
+// the polaroid stack in the hero. add/remove as many as you like.
+// to use a new photo: drop it in src/assets, import it above, and add it here
+// (or paste an ImageKit url as `src` instead of importing).
+export const heroPhotos: { src: string; caption: string }[] = [
+  { src: profileFront, caption: 'me, thinking about coffee' },
+  { src: profileBack, caption: 'me again, other side' },
+]
 
 export type Track = {
   id: string
@@ -12,26 +22,21 @@ export type Track = {
 // shown when the live spotify feed isn't available (local dev, or before the
 // SPOTIFY_* env vars are set on vercel). swap these any time.
 export const fallbackTracks: Track[] = [
-  { id: '6bSxqfL5jBgOKYTWP75l5M', name: 'ILYSB', artists: 'LANY', note: 'the one that started it' },
+  { id: '7DMPq3XndRJaj6NTINsLOz', name: 'Let Me Know', artists: 'LANY' },
+  { id: '0aYb7QVn9MGxSsYbcTwVUs', name: 'anything 4 u', artists: 'LANY' },
+  { id: '56k68P3bFQvnKw89hizJFZ', name: 'Paint By Numbers', artists: 'Harry Styles' },
   {
-    id: '5Qo7dIW7SLJcEtvFDRsbHt',
-    name: 'Malibu Nights',
-    artists: 'LANY',
-    note: 'for 1am editing sessions',
+    id: '1Ehdm1PDlKrdfyBsjwEvd1',
+    name: 'Top Of The World',
+    artists: 'Carpenters',
+    note: 'an oldie',
   },
   {
-    id: '44AyOl4qVkzS48vBsbNXaC',
-    name: "Can't Help Falling in Love",
-    artists: 'Elvis Presley',
-    note: 'an oldie, a goodie',
+    id: '3Rc2ajBMInxeNGVkMPC92Y',
+    name: 'Dancing On My Own',
+    artists: 'Robyn',
+    note: 'kitchen dance song',
   },
-  {
-    id: '4QxDOjgpYtQDxxbWPuEJOy',
-    name: 'L-O-V-E',
-    artists: 'Nat King Cole',
-    note: 'self-explanatory',
-  },
-  { id: '5zFbcZbGgyTltYP9peakcO', name: 'Super Far', artists: 'LANY', note: 'windows down' },
 ]
 
 export const tickerWords = [
@@ -42,7 +47,7 @@ export const tickerWords = [
   'LANY on repeat',
   'aprendiendo español',
   'blue stripes, always',
-  'loves love',
+  'kitchen dancer',
 ]
 
 export type Milk = {
@@ -93,12 +98,29 @@ export const spanishPhrases = [
   { es: 'un poquito nada más', en: 'just a little bit' },
 ]
 
-export const romcoms = [
-  { title: 'Notting Hill', year: 1999, line: 'just a girl, standing in front of a boy' },
-  { title: '10 Things I Hate About You', year: 1999, line: 'the stadium scene. enough said.' },
-  { title: 'The Proposal', year: 2009, line: 'rewatched more times than i can admit' },
-  { title: 'Crazy Rich Asians', year: 2018, line: 'the mahjong scene!!' },
-  { title: 'About Time', year: 2013, line: 'made me call my family after' },
+export type Watch = {
+  title: string
+  tag: string
+  line: string
+  genre: 'romcom' | 'thriller'
+}
+
+export const watchlist: Watch[] = [
+  { title: 'Nobody Wants This', tag: 'series', line: 'noah & joanne, forever', genre: 'romcom' },
+  { title: 'One Day', tag: 'rewatch', line: 'bring tissues', genre: 'romcom' },
+  {
+    title: 'How to Lose a Guy in 10 Days',
+    tag: '2003',
+    line: 'the “you’re so vain” scene',
+    genre: 'romcom',
+  },
+  {
+    title: 'anything Harlan Coben',
+    tag: 'thriller',
+    line: 'detective brain: on',
+    genre: 'thriller',
+  },
+  { title: 'Speak No Evil', tag: 'thriller', line: 'yelled at the screen', genre: 'thriller' },
 ]
 
 // conversation cards. the thing i actually love: how people think.
@@ -140,7 +162,7 @@ export const wardrobe = [
 ]
 
 export const socials = {
-  instagram: 'https://www.instagram.com/gabriellenicole/',
+  instagram: 'https://www.instagram.com/gabriellenicoles/',
   telegram: 'https://t.me/gabriellenicole',
   email: 'mailto:gabrielle.nicole03@gmail.com',
   linkedin: 'https://www.linkedin.com/in/gabrielle-nicole/',

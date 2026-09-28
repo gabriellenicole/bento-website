@@ -60,14 +60,18 @@ export const Sparkle = (p: P) => (
   </svg>
 )
 
-// circular badge text, like a little sticker
+// circular badge text, like a little sticker. the text is stretched to exactly
+// one lap of the circle so the end never bumps into the start.
+const LAP = 2 * Math.PI * 44
 export const CircleText = ({ text, className }: { text: string; className?: string }) => (
   <svg viewBox="0 0 120 120" className={className} aria-hidden>
     <defs>
       <path id="circle-path" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0" />
     </defs>
-    <text className="fill-current font-mono text-[10.5px] uppercase tracking-[0.18em]">
-      <textPath href="#circle-path">{text}</textPath>
+    <text className="fill-current font-mono text-[10px] uppercase">
+      <textPath href="#circle-path" textLength={LAP} lengthAdjust="spacing">
+        {`${text.trim()}\u00A0\u00A0`}
+      </textPath>
     </text>
   </svg>
 )

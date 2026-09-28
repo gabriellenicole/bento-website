@@ -153,7 +153,7 @@ export default function About() {
             </span>{' '}
           </span>
         ))}
-        &amp; someone who <em className="text-cobalt">really</em> loves love.
+        &amp; someone who <em className="text-cobalt">dances around the kitchen.</em>
       </p>
 
       <div className="relative mx-auto mt-20 max-w-4xl">

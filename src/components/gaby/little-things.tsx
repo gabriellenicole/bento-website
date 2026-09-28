@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { milks, socials, spanishPhrases, wardrobe } from '@/data/me'
 import { cn } from '@/lib/utils'
@@ -8,10 +8,49 @@ const Label = ({ children }: { children: React.ReactNode }) => (
   <p className="font-mono text-[11px] uppercase tracking-widest text-ink/60">{children}</p>
 )
 
+const cubes = [
+  { left: '14%', rotate: -12, delay: 0 },
+  { left: '42%', rotate: 8, delay: 0.7 },
+  { left: '66%', rotate: -4, delay: 1.3 },
+]
+
+// iced, always. they bob on the surface, and you can push them around.
+function IceCubes({ surface, mug }: { surface: number; mug: React.RefObject<HTMLDivElement> }) {
+  return (
+    <motion.div
+      className="pointer-events-none absolute inset-x-0 h-0"
+      animate={{ bottom: surface - 14 }}
+      transition={{ duration: 0.6 }}
+    >
+      {cubes.map((c, i) => (
+        <motion.div
+          key={i}
+          drag
+          dragConstraints={mug}
+          dragElastic={0.15}
+          dragMomentum={false}
+          whileDrag={{ scale: 1.1, cursor: 'grabbing' }}
+          className="pointer-events-auto absolute -top-3 cursor-grab touch-none"
+          style={{ left: c.left }}
+        >
+          <motion.div
+            animate={{ y: [0, -3, 0], rotate: [c.rotate, c.rotate + 9, c.rotate] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut', delay: c.delay }}
+            className="relative h-7 w-7 rounded-[7px] border border-white/90 bg-white/45 shadow-[inset_-3px_-3px_6px_rgba(36,71,201,0.18)] backdrop-blur-[1px]"
+          >
+            <span className="absolute left-1 top-1 h-2 w-1 rounded-full bg-white/90" />
+          </motion.div>
+        </motion.div>
+      ))}
+    </motion.div>
+  )
+}
+
 function CoffeeLab() {
   const [milkId, setMilkId] = useState<string | null>(null)
   const [froth, setFroth] = useState(0)
   const milk = milks.find((m) => m.id === milkId)
+  const mugRef = useRef<HTMLDivElement>(null)
 
   // hold the button to froth, like the real thing
   const [holding, setHolding] = useState(false)
@@ -39,20 +78,10 @@ function CoffeeLab() {
     >
       {/* the mug */}
       <div className="relative mx-auto h-56 w-44 shrink-0">
-        <AnimatePresence>
-          {froth >= 100 &&
-            [0, 1, 2].map((i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: [0, 0.6, 0], y: -30 }}
-                transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.6 }}
-                className="absolute top-0 h-8 w-1 rounded-full bg-ink/20"
-                style={{ left: `${40 + i * 18}%` }}
-              />
-            ))}
-        </AnimatePresence>
-        <div className="absolute bottom-0 left-0 h-44 w-36 overflow-hidden rounded-b-[36px] rounded-t-md border-[3px] border-ink bg-paper">
+        <div
+          ref={mugRef}
+          className="absolute bottom-0 left-0 h-44 w-36 overflow-hidden rounded-b-[36px] rounded-t-md border-[3px] border-ink bg-paper"
+        >
           <div className="absolute inset-x-0 bottom-0 flex flex-col-reverse">
             <div className="h-14 bg-[#3B2418]" />
             <motion.div
@@ -65,6 +94,7 @@ function CoffeeLab() {
               className="rounded-t-xl"
             />
           </div>
+          <IceCubes surface={56 + (milk ? 52 + (froth / 100) * 34 : 0)} mug={mugRef} />
           {/* the stripes on my mug, of course */}
           <div className="stripes-diag pointer-events-none absolute inset-x-0 top-3 h-3 opacity-60" />
         </div>
@@ -181,37 +211,39 @@ function VlogVault() {
           they live on my private ig. get to know me first, and i&apos;ll show you{' '}
           <span className="font-hand text-lg">(wink)</span>
         </p>
-        <AnimatePresence mode="wait">
-          {!knocked ? (
-            <motion.button
-              key="knock"
-              exit={{ opacity: 0 }}
-              onClick={() => setKnocked(true)}
-              className="mt-5 rounded-full border border-paper/40 px-5 py-2 font-mono text-xs uppercase tracking-widest hover:bg-paper hover:text-ink"
+        {/* both states share one grid cell so the card never changes height
+            (otherwise the whole row, coffee card included, grows) */}
+        <div className="mt-5 grid [&>*]:col-start-1 [&>*]:row-start-1">
+          <button
+            onClick={() => setKnocked(true)}
+            aria-hidden={knocked}
+            tabIndex={knocked ? -1 : 0}
+            className={cn(
+              'self-start justify-self-start rounded-full border border-paper/40 px-5 py-2 font-mono text-xs uppercase tracking-widest transition-opacity hover:bg-paper hover:text-ink',
+              knocked && 'invisible opacity-0',
+            )}
+          >
+            knock knock 🚪
+          </button>
+          <motion.p
+            initial={false}
+            animate={{ opacity: knocked ? 1 : 0, y: knocked ? 0 : 6 }}
+            aria-hidden={!knocked}
+            className={cn('text-sm', !knocked && 'invisible')}
+          >
+            <span className="font-hand text-2xl text-sky-stripe">who&apos;s there? you!</span>
+            <br />
+            send a request with a little hello and{' '}
+            <a
+              href={socials.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-sky-stripe underline-offset-4"
             >
-              knock knock 🚪
-            </motion.button>
-          ) : (
-            <motion.p
-              key="answer"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-5 text-sm"
-            >
-              <span className="font-hand text-2xl text-sky-stripe">who&apos;s there? you!</span>
-              <br />
-              send a request with a little hello and{' '}
-              <a
-                href={socials.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="underline decoration-sky-stripe underline-offset-4"
-              >
-                i might just let you in →
-              </a>
-            </motion.p>
-          )}
-        </AnimatePresence>
+              i might just let you in →
+            </a>
+          </motion.p>
+        </div>
       </div>
     </div>
   )

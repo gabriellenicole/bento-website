@@ -23,21 +23,24 @@ JamStream is built using React Native for cross-platform compatibility, with Typ
 // Room creation example
 const createRoom = async (userId: string, roomName: string) => {
   try {
-    const roomRef = await firebase.firestore().collection('rooms').add({
-      name: roomName,
-      createdBy: userId,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      members: [userId],
-      currentTrack: null,
-      isPlaying: false
-    });
+    const roomRef = await firebase
+      .firestore()
+      .collection('rooms')
+      .add({
+        name: roomName,
+        createdBy: userId,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        members: [userId],
+        currentTrack: null,
+        isPlaying: false,
+      })
 
-    return roomRef.id;
+    return roomRef.id
   } catch (error) {
-    console.error('Error creating room:', error);
-    throw error;
+    console.error('Error creating room:', error)
+    throw error
   }
-};
+}
 ```
 
 ## User Interface

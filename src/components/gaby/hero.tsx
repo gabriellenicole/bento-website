@@ -1,21 +1,19 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import profileFront from '@/assets/profile_front.jpeg'
-import profileBack from '@/assets/profile_back.jpeg'
+import { heroPhotos } from '@/data/me'
 import { CircleText, Sparkle, Squiggle } from './doodles'
 
 type Card = { kind: 'photo'; src: string; caption: string } | { kind: 'note'; caption: string }
 
 const cards: Card[] = [
-  { kind: 'photo', src: profileFront, caption: 'me, thinking about coffee' },
-  { kind: 'photo', src: profileBack, caption: 'me again, other side' },
+  ...heroPhotos.map((p) => ({ kind: 'photo' as const, ...p })),
   { kind: 'note', caption: 'one of us, soon?' },
 ]
 
-const tilts = [-4, 3, -1.5]
+const tilts = [-4, 3, -1.5, 2, -2.5, 1]
 
 function PolaroidStack() {
-  const [order, setOrder] = useState([0, 1, 2])
+  const [order, setOrder] = useState(() => cards.map((_, i) => i))
 
   const shuffle = () => setOrder(([first, ...rest]) => [...rest, first])
 
@@ -31,7 +29,7 @@ function PolaroidStack() {
           .slice()
           .reverse()
           .map((cardIdx, i) => {
-            const depth = order.length - 1 - i // 0 is top
+            const depth = Math.min(order.length - 1 - i, 2) // 0 is top; only 3 cards peek
             const card = cards[cardIdx]
             return (
               <motion.div
@@ -39,14 +37,14 @@ function PolaroidStack() {
                 layout
                 initial={false}
                 animate={{
-                  rotate: tilts[cardIdx] + depth * 2.5,
+                  rotate: tilts[cardIdx % tilts.length] + depth * 2.5,
                   y: depth * 6,
                   x: depth * 8,
                   scale: 1 - depth * 0.03,
                 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 24 }}
                 className="absolute inset-0 flex flex-col overflow-hidden bg-paper p-3 pb-0 shadow-[0_10px_30px_-10px_rgba(21,23,31,0.35)]"
-                style={{ zIndex: 10 - depth }}
+                style={{ zIndex: i }}
               >
                 {card.kind === 'photo' ? (
                   <img

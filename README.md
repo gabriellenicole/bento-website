@@ -16,6 +16,21 @@ milk options, the friend quiz, conversation questions, socials, and gallery phot
 
 the homepage sections live in `src/components/gaby/`.
 
+## changing photos
+
+**hero polaroids** → `heroPhotos` in `src/data/me.ts`
+
+1. put the photo in `src/assets/` (e.g. `src/assets/me-coffee.jpg`)
+2. import it at the top of `me.ts`: `import meCoffee from '@/assets/me-coffee.jpg'`
+3. add `{ src: meCoffee, caption: 'a short caption' }` to `heroPhotos`
+
+keep captions short (~25 characters) so they fit on one line. portrait photos look best.
+
+**gallery** → the `imagekit` list in `src/data/me.ts`
+
+upload to imagekit.io and paste the part of the url after `/gabriellenicole/`,
+or import a local file like above and add it to `galleryPhotos`.
+
 ## spotify setup (live top 5)
 
 the music player calls `/api/top-tracks` (`api/top-tracks.ts`, a vercel function) for my

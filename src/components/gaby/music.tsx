@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { fallbackTracks, romcoms, socials, type Track } from '@/data/me'
+import { fallbackTracks, socials, watchlist, type Track } from '@/data/me'
 import { cn } from '@/lib/utils'
 import { Record } from './doodles'
 
@@ -115,35 +115,50 @@ function Player() {
   )
 }
 
-function Romcoms() {
+function Watchlist() {
   return (
     <div className="mt-16">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-2">
         <h3 className="font-serif text-4xl">
-          and the romcoms i&apos;ll <em className="text-cobalt">always</em> rewatch
+          good old romcoms <em className="text-cobalt">(and a good mystery)</em>
         </h3>
-        <p className="font-hand text-2xl text-cobalt">good old romcoms &gt; everything</p>
+        <p className="font-hand text-2xl text-cobalt">soft heart, detective brain</p>
       </div>
-      <div className="-mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
-        {romcoms.map((m, i) => (
-          <div
-            key={m.title}
-            className={cn(
-              'relative flex w-60 shrink-0 snap-start flex-col justify-between gap-6 rounded-2xl border-2 border-dashed p-5 transition-transform hover:-rotate-1',
-              i % 2 ? 'border-cobalt/50 bg-sky-soft' : 'border-ink/20 bg-paper',
-            )}
-          >
-            {/* ticket notches */}
-            <span className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-cream" />
-            <span className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-cream" />
-            <div className="flex justify-between font-mono text-[10px] uppercase tracking-widest text-ink/50">
-              <span>admit one</span>
-              <span>{m.year}</span>
+      <div className="-mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-3">
+        {watchlist.map((m) => {
+          const thriller = m.genre === 'thriller'
+          return (
+            <div
+              key={m.title}
+              className={cn(
+                'relative flex w-60 shrink-0 snap-start flex-col justify-between gap-6 rounded-2xl border-2 border-dashed p-5 transition-transform hover:-rotate-1',
+                thriller ? 'border-paper/30 bg-ink text-paper' : 'border-cobalt/50 bg-sky-soft',
+              )}
+            >
+              {/* ticket notches */}
+              <span className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-cream" />
+              <span className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-cream" />
+              <div
+                className={cn(
+                  'flex justify-between font-mono text-[10px] uppercase tracking-widest',
+                  thriller ? 'text-paper/50' : 'text-ink/50',
+                )}
+              >
+                <span>{thriller ? 'case file' : 'admit one'}</span>
+                <span>{m.tag}</span>
+              </div>
+              <p className="font-serif text-3xl leading-none">{m.title}</p>
+              <p
+                className={cn(
+                  'font-hand text-xl leading-tight',
+                  thriller ? 'text-sky-stripe' : 'text-cobalt',
+                )}
+              >
+                {m.line}
+              </p>
             </div>
-            <p className="font-serif text-3xl leading-none">{m.title}</p>
-            <p className="font-hand text-xl leading-tight text-cobalt">{m.line}</p>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
@@ -166,7 +181,7 @@ export default function Music() {
           </p>
         </div>
         <Player />
-        <Romcoms />
+        <Watchlist />
       </div>
     </section>
   )
