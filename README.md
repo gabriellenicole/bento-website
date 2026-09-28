@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# gaby's corner of the internet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+my personal site. blue stripes, homemade coffee, LANY on repeat.
 
-Currently, two official plugins are available:
+built with vite + react + tailwind + framer-motion, deployed on vercel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+pnpm install
+pnpm dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## where to edit things
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+almost everything personal lives in `src/data/me.ts`: songs, romcoms, spanish phrases,
+milk options, the friend quiz, conversation questions, socials, and gallery photos.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+the homepage sections live in `src/components/gaby/`.
+
+## changing photos
+
+**hero polaroids** → `heroPhotos` in `src/data/me.ts`
+
+1. put the photo in `src/assets/` (e.g. `src/assets/me-coffee.jpg`)
+2. import it at the top of `me.ts`: `import meCoffee from '@/assets/me-coffee.jpg'`
+3. add `{ src: meCoffee, caption: 'a short caption' }` to `heroPhotos`
+
+keep captions short (~25 characters) so they fit on one line. portrait photos look best.
+
+**gallery** → the `imagekit` list in `src/data/me.ts`
+
+upload to imagekit.io and paste the part of the url after `/gabriellenicole/`,
+or import a local file like above and add it to `galleryPhotos`.
+
+## spotify setup (live top 5)
+
+the music player calls `/api/top-tracks` (`api/top-tracks.ts`, a vercel function) for my
+real top 5 from the last ~4 weeks. until it's set up (and in `pnpm dev`) it falls back to
+the hand-picked list in `src/data/me.ts`.
+
+1. create an app at https://developer.spotify.com/dashboard and add the redirect uri
+   `http://127.0.0.1:8888/callback`
+2. get a refresh token (one time):
+   ```bash
+   SPOTIFY_CLIENT_ID=xxx SPOTIFY_CLIENT_SECRET=yyy node scripts/spotify-refresh-token.mjs
+   ```
+   open the url it prints, log in, and copy the `SPOTIFY_REFRESH_TOKEN` from the terminal.
+3. in vercel → project → settings → environment variables, add
+   `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`, then redeploy.
+
+to test the function locally, use `vercel dev` instead of `pnpm dev`.
