@@ -1,28 +1,19 @@
-## About PINTU App
+**tl;dr** one app for the indonesian student community in singapore: events, sign-ups, payments, and even voting for the president.
 
-PINTU App is a comprehensive web application designed to support the day-to-day operations and events for the Indonesian Association in Singapore. The name "PINTU" stands for "Pelajar Indonesia Nasional Teknologi Universitas," which represents the Indonesian student community in Singapore.
+## why
 
-### Purpose
+an association runs a _lot_ of events. we wanted one simple place for members to handle all of it, right from their phones.
 
-The application serves as a central platform for:
+## what it does
 
-- Event management and registration
-- President Voting
-- Payment processing for events
+- event registration
+- payments (yes, including snack bundles 🍫)
+- president voting: democracy, but make it an app
 
-## Design Process
+## the design part
 
-The design process involved extensive user research with association members to understand their needs and pain points. Using Figma and Adobe Illustrator, we created a user interface that is:
+we talked to members first to find out what actually annoyed them, then designed it in figma and illustrator with little touches of indonesian culture. the goal: anyone can figure it out in ten seconds, on any screen size.
 
-- Intuitive and easy to navigate
-- Visually appealing with elements of Indonesian culture
-- Responsive across all device sizes
-- Accessible to all users
+## see it
 
-## Impact
-
-Since its launch, PINTU App has:
-
-- Increased event attendance by 35%
-- Streamlined administrative processes by 60%
-- Improved member engagement and satisfaction
+it's live, and the figma file is public too. links are up top.

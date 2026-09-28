@@ -1,62 +1,24 @@
-## JamStream: Social Music Listening
+**tl;dr** a spotify-ish app where you and your friends listen to the same song, at the same second, in the same "room", and talk about it.
 
-JamStream is a mobile application that enhances the music listening experience by adding a social component. It allows users to create virtual rooms where they can listen to music together and chat in real-time, regardless of their physical location.
+## why
 
-### The Problem
+spotify's group session is cute, but it disappears when you leave, there's no chat, and you can't find anyone else's session. we wanted a listening party that doesn't have to end.
 
-Traditional music streaming services like Spotify offer limited social features. While Spotify has a "Group Session" feature, it lacks persistent rooms, chat functionality, and the ability to discover public listening sessions.
+## what it does
 
-### Our Solution
+- rooms that keep playing even after the creator leaves
+- real-time chat while the music plays
+- public rooms you can just drop into
+- playlists you build together
 
-JamStream addresses these limitations by providing:
+## the hard part
 
-- Persistent listening rooms that continue even when the creator leaves
-- Real-time chat functionality during music sessions
-- Public room discovery for finding like-minded music fans
-- Collaborative playlist creation and management
+keeping everyone on the exact same second of the song. plus spotify's API rate limits. plus chat lag. turns out "real-time" is a lot harder than it sounds.
 
-## Technical Architecture
+## built with
 
-JamStream is built using React Native for cross-platform compatibility, with TypeScript for type safety. The application integrates with the Spotify API for music streaming and metadata, while Firebase provides real-time database functionality for the chat and room state management.
+react native + typescript, the spotify API, and firebase for all the live stuff. we designed it in figma first.
 
-```typescript
-// Room creation example
-const createRoom = async (userId: string, roomName: string) => {
-  try {
-    const roomRef = await firebase.firestore().collection('rooms').add({
-      name: roomName,
-      createdBy: userId,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      members: [userId],
-      currentTrack: null,
-      isPlaying: false
-    });
+## someday
 
-    return roomRef.id;
-  } catch (error) {
-    console.error('Error creating room:', error);
-    throw error;
-  }
-};
-```
-
-## User Interface
-
-The UI was designed in Figma with a focus on:
-
-1. **Intuitive Navigation**: Easy access to rooms, playlists, and chat
-2. **Real-time Feedback**: Visual cues for currently playing tracks and active users
-3. **Consistent Styling**: Following material design principles with a dark theme optimized for music apps
-
-## Challenges Overcome
-
-- **Synchronization**: Ensuring all users hear the same part of a song simultaneously
-- **Latency Management**: Minimizing delays in chat and music control actions
-- **Spotify API Limitations**: Working within the constraints of the Spotify API's rate limits and permissions
-
-## Future Enhancements
-
-- Voice chat capabilities
-- Music recommendation based on room participants' tastes
-- Advanced DJ controls for room moderators
-- Cross-platform integration with other music streaming services
+voice chat, recommendations based on everyone in the room, and DJ controls for the host.

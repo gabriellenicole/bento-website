@@ -212,3 +212,7 @@ export const galleryPhotos: string[] = [
   sunset,
   ...imagekit.slice(7),
 ]
+
+// shown next to the blog, on the homepage and on /blog
+export const writingNote =
+  'i just think it’s cool to document thoughts. full honesty: AI helps with all of it. i’m the world’s worst writer, sadly.'
