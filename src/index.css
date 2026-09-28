@@ -21,6 +21,66 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  @apply bg-cream font-sans text-ink;
+}
+
+::selection {
+  @apply bg-cobalt text-paper;
+}
+
+/* ---------- gaby's stripes ---------- */
+
+/* like my favorite pants: vertical, soft blue */
+.stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    theme('colors.sky.stripe') 0 28px,
+    theme('colors.paper') 28px 56px
+  );
+}
+
+/* like my bedsheet: thinner, bolder */
+.stripes-bold {
+  background-image: repeating-linear-gradient(
+    90deg,
+    theme('colors.cobalt.DEFAULT') 0 10px,
+    theme('colors.paper') 10px 22px
+  );
+}
+
+.stripes-diag {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    theme('colors.sky.stripe') 0 8px,
+    transparent 8px 16px
+  );
+}
+
+.grid-paper {
+  background-image:
+    linear-gradient(theme('colors.sky.stripe / 45%') 1px, transparent 1px),
+    linear-gradient(90deg, theme('colors.sky.stripe / 45%') 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.tape {
+  @apply absolute h-7 w-24 bg-sky-stripe/80 shadow-sm;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 6px,
+    rgb(255 255 255 / 0.35) 6px 12px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Prevent scroll during restoration */

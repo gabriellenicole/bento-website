@@ -1,8 +1,9 @@
-import Contact from '@/components/section/contact'
-import Hero from '@/components/section/hero'
-import Projects from './components/section/projects'
-import Gallery from './components/section/gallery'
-import Blog from './components/section/blog'
+import Hero from '@/components/gaby/hero'
+import About, { Ticker } from '@/components/gaby/about'
+import LittleThings from '@/components/gaby/little-things'
+import Music from '@/components/gaby/music'
+import { Gallery, People } from '@/components/gaby/people'
+import { Footer, WorkCorner } from '@/components/gaby/work-and-footer'
 import { useScrollRestoration } from './lib/utils'
 
 export default function App() {
@@ -10,12 +11,16 @@ export default function App() {
   useScrollRestoration()
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col items-center justify-center bg-white text-neutral-800">
+    <main className="mx-auto flex max-w-[1440px] flex-col items-center overflow-x-clip pt-1">
       <Hero />
-      <Blog />
-      <Projects />
+      <Ticker />
+      <About />
+      <LittleThings />
+      <Music />
+      <People />
       <Gallery />
-      <Contact />
-    </div>
+      <WorkCorner />
+      <Footer />
+    </main>
   )
 }
