@@ -5,7 +5,17 @@ import { Heart, Sparkle } from './doodles'
 
 function QuestionDeck() {
   const [i, setI] = useState(0)
-  const next = () => setI((v) => (v + 1) % questions.length)
+  const finished = i >= questions.length
+  const last = i === questions.length - 1
+
+  const cardMotion = {
+    initial: { opacity: 0, y: 20, rotate: -4 },
+    animate: { opacity: 1, y: 0, rotate: -1 },
+    exit: { opacity: 0, x: 120, rotate: 12 },
+    transition: { type: 'spring', stiffness: 220, damping: 22 },
+  } as const
+  const cardClass =
+    'absolute inset-0 flex flex-col justify-between rounded-3xl bg-paper p-7 text-left text-ink shadow-xl'
 
   return (
     <div className="relative mx-auto h-72 w-full max-w-sm">
@@ -13,24 +23,49 @@ function QuestionDeck() {
       <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-3 rounded-3xl bg-sky-stripe" />
       <div className="stripes absolute inset-0 translate-x-1.5 translate-y-1.5 rotate-1 rounded-3xl" />
       <AnimatePresence mode="popLayout">
-        <motion.button
-          key={i}
-          onClick={next}
-          initial={{ opacity: 0, y: 20, rotate: -4 }}
-          animate={{ opacity: 1, y: 0, rotate: -1 }}
-          exit={{ opacity: 0, x: 120, rotate: 12 }}
-          transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-          className="absolute inset-0 flex flex-col justify-between rounded-3xl bg-paper p-7 text-left text-ink shadow-xl"
-        >
-          <div className="flex justify-between font-mono text-[10px] uppercase tracking-widest text-ink/50">
-            <span>question no. {String(i + 1).padStart(2, '0')}</span>
-            <Heart className="h-4 w-4 text-cobalt" />
-          </div>
-          <p className="font-serif text-3xl leading-tight">{questions[i]}</p>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-cobalt">
-            tap for another →
-          </p>
-        </motion.button>
+        {!finished ? (
+          <motion.button key={i} onClick={() => setI(i + 1)} {...cardMotion} className={cardClass}>
+            <div className="flex justify-between font-mono text-[10px] uppercase tracking-widest text-ink/50">
+              <span>
+                question no. {String(i + 1).padStart(2, '0')} / {questions.length}
+              </span>
+              <Heart className="h-4 w-4 text-cobalt" />
+            </div>
+            <p className="font-serif text-3xl leading-tight">{questions[i]}</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-cobalt">
+              {last ? 'last one, promise →' : 'tap for another →'}
+            </p>
+          </motion.button>
+        ) : (
+          <motion.div key="done" {...cardMotion} className={cardClass}>
+            <div className="flex justify-between font-mono text-[10px] uppercase tracking-widest text-ink/50">
+              <span>bonus card</span>
+              <Heart className="h-4 w-4 fill-cobalt text-cobalt" />
+            </div>
+            <div>
+              <p className="font-serif text-3xl leading-tight">
+                woah, you really went through <em className="text-cobalt">all</em> of them?
+              </p>
+              <p className="mt-2 font-hand text-2xl leading-tight text-cobalt">
+                okay. i like you. please say hi to me.
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <a
+                href="#hi"
+                className="rounded-full bg-cobalt px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-paper hover:bg-cobalt-deep"
+              >
+                say hi →
+              </a>
+              <button
+                onClick={() => setI(0)}
+                className="font-mono text-[10px] uppercase tracking-widest text-ink/50 underline underline-offset-4 hover:text-cobalt"
+              >
+                again?
+              </button>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   )

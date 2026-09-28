@@ -98,10 +98,14 @@ export function Footer() {
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-paper/30 px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-paper hover:text-ink"
+                className="group rounded-full border border-paper/30 px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-paper hover:text-ink"
               >
                 {l.label}
-                {l.note && <span className="ml-2 normal-case text-paper/50">{l.note}</span>}
+                {l.note && (
+                  <span className="ml-2 normal-case text-paper/50 transition-colors group-hover:text-ink/50">
+                    {l.note}
+                  </span>
+                )}
               </a>
             ))}
           </div>

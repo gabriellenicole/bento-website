@@ -135,9 +135,20 @@ function Watchlist() {
                 thriller ? 'border-paper/30 bg-ink text-paper' : 'border-cobalt/50 bg-sky-soft',
               )}
             >
-              {/* ticket notches */}
-              <span className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-cream" />
-              <span className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-cream" />
+              {/* ticket notches: centered on the card edge, only the inner half shown, with
+                  the same dashed border so the dotted line follows the half circle */}
+              {(['left', 'right'] as const).map((side) => (
+                <span
+                  key={side}
+                  className={cn(
+                    'absolute top-1/2 h-7 w-7 -translate-y-1/2 rounded-full border-2 border-dashed bg-cream bg-clip-padding',
+                    side === 'left'
+                      ? '-left-[16px] [clip-path:inset(0_0_0_50%)]'
+                      : '-right-[16px] [clip-path:inset(0_50%_0_0)]',
+                    thriller ? 'border-paper/30' : 'border-cobalt/50',
+                  )}
+                />
+              ))}
               <div
                 className={cn(
                   'flex justify-between font-mono text-[10px] uppercase tracking-widest',
