@@ -9,7 +9,7 @@ export function Ticker() {
   // is seamless. spacing lives in padding (not flex gap) so both laps are equal.
   const lap = [...tickerWords, ...tickerWords, ...tickerWords]
   return (
-    <div className="mx-3 mt-5 overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
+    <div className="mx-3 mt-5 min-w-0 self-stretch overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
       <div className="flex w-max animate-marquee">
         {[0, 1].map((copy) => (
           <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>

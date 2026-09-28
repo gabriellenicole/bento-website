@@ -148,7 +148,8 @@ export default function Hero() {
               or skip to the music
             </a>
           </div>
-          <Squiggle className="absolute bottom-8 right-8 hidden w-32 text-cobalt/60 xl:block" />
+          {/* points down: "keep scrolling" */}
+          <Squiggle className="absolute bottom-16 right-16 hidden w-28 rotate-[65deg] text-cobalt/60 xl:block" />
         </div>
       </div>
     </header>
