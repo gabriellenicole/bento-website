@@ -155,6 +155,29 @@ export default function About() {
         ))}
         &amp; someone who <em className="text-cobalt">dances around the kitchen.</em>
       </p>
+      {/* a little footnote for the kitchen dancing */}
+      <div className="mx-auto mt-3 flex max-w-6xl justify-center lg:justify-end lg:pr-[12%]">
+        <div className="flex -rotate-2 items-start gap-2 text-cobalt">
+          <svg
+            viewBox="0 0 40 40"
+            className="mt-1 h-8 w-8 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M34 34C18 32 10 22 12 6" />
+            <path d="M6 12l6-7 6 7" />
+          </svg>
+          <p className="font-hand text-2xl leading-tight sm:text-3xl">
+            (only if you know me well enough ;)
+            <br />
+            not in front of everybody, i&apos;m an introvert lol)
+          </p>
+        </div>
+      </div>
 
       <div className="relative mx-auto mt-20 max-w-4xl">
         <Squiggle className="absolute -left-4 top-1/3 hidden w-40 rotate-12 -scale-x-100 text-ink/70 lg:block" />

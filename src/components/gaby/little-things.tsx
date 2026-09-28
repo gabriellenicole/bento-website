@@ -208,8 +208,7 @@ function VlogVault() {
           i could edit vlogs for four hours straight.
         </h3>
         <p className="mt-2 text-sm text-paper/70">
-          they live on my private ig. get to know me first, and i&apos;ll show you{' '}
-          <span className="font-hand text-lg">(wink)</span>
+          they live on my private ig. get to know me first, and i&apos;ll show you <span>(😉)</span>
         </p>
         {/* both states share one grid cell so the card never changes height
             (otherwise the whole row, coffee card included, grows) */}

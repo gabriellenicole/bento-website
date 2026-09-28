@@ -123,7 +123,16 @@ export function Gallery() {
             className={`relative w-56 shrink-0 snap-center bg-paper p-2.5 pb-8 shadow-[0_10px_25px_-12px_rgba(21,23,31,0.4)] transition-transform duration-300 hover:z-10 hover:rotate-0 hover:scale-105 sm:w-64 ${tilt[i % tilt.length]}`}
           >
             {i % 3 === 0 && <span className="tape -top-3 left-1/2 -translate-x-1/2 rotate-2" />}
-            <img src={src} alt="" loading="lazy" className="aspect-[3/4] w-full object-cover" />
+            <img
+              src={src}
+              alt=""
+              loading="lazy"
+              className="aspect-[3/4] w-full object-cover"
+              // if a file name is off, hide that polaroid instead of showing a broken image
+              onError={(e) =>
+                ((e.currentTarget.parentElement as HTMLElement).style.display = 'none')
+              }
+            />
           </figure>
         ))}
       </div>

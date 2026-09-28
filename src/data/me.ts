@@ -7,7 +7,14 @@ import profileBack from '@/assets/profile_back.jpeg'
 // the polaroid stack in the hero. add/remove as many as you like.
 // to use a new photo: drop it in src/assets, import it above, and add it here
 // (or paste an ImageKit url as `src` instead of importing).
+// photos on imagekit: pass the file name exactly as uploaded. `f-auto` lets imagekit
+// convert HEIC (iphone) photos into something every browser can show.
+export const ik = (file: string, width = 900) =>
+  `https://ik.imagekit.io/gabriellenicole/${file}?tr=w-${width},f-auto`
+
 export const heroPhotos: { src: string; caption: string }[] = [
+  { src: ik('IMG_7660.JPG', 700), caption: 'hi, it’s me!' },
+  { src: ik('IMG_8208.JPG', 700), caption: 'me, mid-thought' },
   { src: profileFront, caption: 'me, thinking about coffee' },
   { src: profileBack, caption: 'me again, other side' },
 ]
@@ -184,7 +191,25 @@ const imagekit = [
   'F474697B-D380-41DA-BA42-1976F6EC7AED_1_105_c.jpeg?updatedAt=1728390891485',
 ].map((p) => `https://ik.imagekit.io/gabriellenicole/${p}`)
 
+// the newest batch
+const newPhotos = [
+  'NLS_1362.JPEG',
+  'IMG_4904.HEIC',
+  'IMG_0888.JPG',
+  'IMG_4577.JPG',
+  'IMG_1745.heic',
+  'IMG_4970.JPG',
+  'IMG_3686.JPG',
+  'IMG_3818.JPG',
+  'IMG_3702.JPG',
+  'IMG_1477.JPG',
+  'IMG_0879.JPG',
+  'IMG_0454.JPG',
+  'IMG_3362.JPG',
+].map((f) => ik(f, 600))
+
 export const galleryPhotos: string[] = [
+  ...newPhotos,
   ...imagekit.slice(0, 3),
   cafe,
   ...imagekit.slice(3, 7),

@@ -52,6 +52,8 @@ function PolaroidStack() {
                     alt="gaby"
                     className="aspect-[4/5] w-full object-cover"
                     draggable={false}
+                    // a photo that fails to load just leaves the stack
+                    onError={() => setOrder((o) => o.filter((x) => x !== cardIdx))}
                   />
                 ) : (
                   <div className="grid-paper flex aspect-[4/5] w-full flex-col items-center justify-center gap-3 border border-dashed border-cobalt/40 text-cobalt">
