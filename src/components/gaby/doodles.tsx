@@ -50,7 +50,8 @@ export const Record = (p: P) => (
 export const Squiggle = (p: P) => (
   <svg viewBox="0 0 160 80" {...base} strokeWidth={2.2} {...p}>
     <path d="M4 20c30-18 52 10 36 26-12 12-22-8-6-16 22-11 44 24 76 26 18 1 30-8 40-18" />
-    <path d="M140 30l10 8-12 4" />
+    {/* head: barbs at ±35° around the curve's final direction (up-right, 45°) */}
+    <path d="M138 40L150 38L148 50" />
   </svg>
 )
 
