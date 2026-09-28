@@ -14,9 +14,6 @@ export function WorkCorner() {
           <h2 className="font-serif text-4xl sm:text-5xl">
             oh, and i also <em className="text-cobalt">build things.</em>
           </h2>
-          <p className="max-w-xs font-hand text-2xl leading-tight text-ink/60">
-            frontend, gen AI, cloud. i enjoy it, it&apos;s just not the most interesting part.
-          </p>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2">
@@ -43,8 +40,12 @@ export function WorkCorner() {
             </ul>
           </div>
           <div>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-widest text-ink/60">
-              things i wrote (mostly about books)
+            <p className="font-mono text-[11px] uppercase tracking-widest text-ink/60">
+              things i wrote
+            </p>
+            <p className="mb-3 mt-1 font-hand text-xl leading-tight text-ink/60">
+              i just think it&apos;s cool to document thoughts. full honesty: AI helps with all of
+              it. i&apos;m the world&apos;s worst writer, sadly.
             </p>
             <ul>
               {posts.map((p) => (

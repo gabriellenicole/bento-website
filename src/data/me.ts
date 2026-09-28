@@ -129,7 +129,6 @@ export const questions = [
   'who were you at 15, and would they like you now?',
   'what song takes you straight back to a specific place?',
   'what’s something you changed your mind about recently?',
-  'what does love look like to you, on a regular tuesday?',
   'what’s a habit you picked up from someone you love?',
   'what’s your comfort movie and why that one?',
   'what did you need to hear a year ago?',

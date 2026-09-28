@@ -132,9 +132,6 @@ export default function Hero() {
             depending on what we&apos;ve lived through. this is a little corner of the internet
             that&apos;s just&hellip; me.
           </p>
-          <p className="font-mono text-xs uppercase tracking-widest text-ink/60">
-            📍 singapore · born &amp; raised in indonesia 🇮🇩
-          </p>
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
               href="#about"
