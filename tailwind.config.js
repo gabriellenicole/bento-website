@@ -37,7 +37,7 @@ export default {
         },
       },
       animation: {
-        marquee: 'marquee 38s linear infinite',
+        marquee: 'marquee 110s linear infinite',
         'spin-slow': 'spin_slow 18s linear infinite',
         wiggle: 'wiggle 2.4s ease-in-out infinite',
       },

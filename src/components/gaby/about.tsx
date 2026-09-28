@@ -4,18 +4,25 @@ import { friendQuiz, tickerWords } from '@/data/me'
 import { Asterisk, Film, Heart, Mug, Record, Squiggle } from './doodles'
 
 export function Ticker() {
-  const words = [...tickerWords, ...tickerWords]
+  // one "lap" repeats the words enough times to be wider than any screen. two
+  // identical laps sit side by side and slide exactly one lap (-50%), so the loop
+  // is seamless. spacing lives in padding (not flex gap) so both laps are equal.
+  const lap = [...tickerWords, ...tickerWords, ...tickerWords]
   return (
     <div className="mx-3 -mt-px overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
-      <div className="flex w-max animate-marquee items-center gap-6">
-        {words.map((w, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-6 whitespace-nowrap font-mono text-xs uppercase tracking-widest"
-          >
-            {w}
-            <Asterisk className="h-3.5 w-3.5 text-cobalt" />
-          </span>
+      <div className="flex w-max animate-marquee">
+        {[0, 1].map((copy) => (
+          <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
+            {lap.map((w, i) => (
+              <span
+                key={i}
+                className="flex items-center gap-6 whitespace-nowrap pr-6 font-mono text-xs uppercase tracking-widest"
+              >
+                {w}
+                <Asterisk className="h-3.5 w-3.5 text-cobalt" />
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </div>
