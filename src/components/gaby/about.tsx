@@ -9,7 +9,7 @@ export function Ticker() {
   // is seamless. spacing lives in padding (not flex gap) so both laps are equal.
   const lap = [...tickerWords, ...tickerWords, ...tickerWords]
   return (
-    <div className="mx-3 -mt-px overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
+    <div className="mx-3 mt-5 overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
       <div className="flex w-max animate-marquee">
         {[0, 1].map((copy) => (
           <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
@@ -179,9 +179,7 @@ export default function About() {
             <path d="M6 12l6-7 6 7" />
           </svg>
           <p className="font-hand text-2xl leading-tight sm:text-3xl">
-            (only if you know me well enough ;)
-            <br />
-            not in front of everybody, i&apos;m an introvert lol)
+            only if you know me well enough ;)
           </p>
         </div>
       </div>
