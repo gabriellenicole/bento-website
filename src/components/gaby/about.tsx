@@ -6,7 +6,7 @@ import { Asterisk, Film, Heart, Mug, Record, Squiggle } from './doodles'
 export function Ticker() {
   const words = [...tickerWords, ...tickerWords]
   return (
-    <div className="mx-3 -mt-px overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
+    <div className="mx-3 mt-5 overflow-hidden border-y border-ink/15 bg-paper py-3 sm:mx-6">
       <div className="flex w-max animate-marquee items-center gap-6">
         {words.map((w, i) => (
           <span
@@ -172,9 +172,7 @@ export default function About() {
             <path d="M6 12l6-7 6 7" />
           </svg>
           <p className="font-hand text-2xl leading-tight sm:text-3xl">
-            (only if you know me well enough ;)
-            <br />
-            not in front of everybody, i&apos;m an introvert lol)
+            only if you know me well enough ;)
           </p>
         </div>
       </div>

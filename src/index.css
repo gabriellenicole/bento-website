@@ -51,7 +51,7 @@ body {
 .stripes-bold {
   background-image: repeating-linear-gradient(
     90deg,
-    theme('colors.cobalt.DEFAULT') 0 10px,
+    theme('colors.sky.stripe') 0 10px,
     theme('colors.paper') 10px 22px
   );
 }
@@ -65,8 +65,7 @@ body {
 }
 
 .grid-paper {
-  background-image:
-    linear-gradient(theme('colors.sky.stripe / 45%') 1px, transparent 1px),
+  background-image: linear-gradient(theme('colors.sky.stripe / 45%') 1px, transparent 1px),
     linear-gradient(90deg, theme('colors.sky.stripe / 45%') 1px, transparent 1px);
   background-size: 28px 28px;
 }
@@ -173,8 +172,8 @@ h6 {
 .bg-intellihub::before {
   background: radial-gradient(
     1000px circle at var(--x) var(--y),
-    #8D51FF 0,
-    #5D0FC0 25%,
+    #8d51ff 0,
+    #5d0fc0 25%,
     rgba(255, 255, 255, 0) 50%,
     transparent 80%
   );

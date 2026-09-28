@@ -17,7 +17,7 @@ export const projects = [
   {
     id: 'intellihub-ai',
     title: 'intellihub.ai',
-    description: 'A scalable AI-powered chatbot widget deployment',
+    description: 'a scalable AI-powered chatbot widget deployment',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI', 'Prompt Engineering'],
     image: {
       src1: intellihubFront,
@@ -31,7 +31,7 @@ export const projects = [
     id: 'pintu-app',
     title: 'PINTU App',
     description:
-      'A web application to support day-to-day events for an Indonesians Association in Singapore',
+      'a web application to support day-to-day events for an Indonesians Association in Singapore',
     techStack: ['React', 'TypeScript', 'Sass', 'Figma', 'Adobe Illustrator'],
     image: {
       src1: pintuAppBack,
@@ -47,7 +47,7 @@ export const projects = [
     id: 'jamstream',
     title: 'JamStream',
     description:
-      'A Spotify clone with group session feature, where users can create rooms, listen to music together, and chat in real-time',
+      'a Spotify clone with group session feature, where users can create rooms, listen to music together, and chat in real-time',
     techStack: ['React Native', 'TypeScript', 'Tailwind CSS', 'Spotify API', 'Firebase'],
     image: {
       src1: spotifyBack,
@@ -64,7 +64,7 @@ export const projects = [
     id: 'spotify-hit-predictor',
     title: 'Spotify Songs: HIT or FLOP?',
     description:
-      'Predicting if a song is inside hitlist, based on its feature, and analyzing the most important feature to predict hitlist songs',
+      'predicting if a song is inside hitlist, based on its feature, and analyzing the most important feature to predict hitlist songs',
     techStack: [
       'Machine Learning',
       'Python',

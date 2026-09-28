@@ -14,8 +14,8 @@ export const ik = (file: string, width = 900) =>
 
 export const heroPhotos: { src: string; caption: string }[] = [
   { src: ik('IMG_7660.JPG', 700), caption: 'hi, it’s me!' },
-  { src: ik('IMG_8208.JPG', 700), caption: 'me, mid-thought' },
-  { src: profileFront, caption: 'me, thinking about coffee' },
+  { src: ik('IMG_8208.JPG', 700), caption: 'me, with a birdie' },
+  { src: profileFront, caption: 'me, with a smile' },
   { src: profileBack, caption: 'me again, other side' },
 ]
 
@@ -162,7 +162,7 @@ export const friendQuiz: QuizQuestion[] = [
 export const wardrobe = [
   { name: 'black', className: 'bg-ink' },
   { name: 'white', className: 'bg-paper border border-ink/15' },
-  { name: 'blue', className: 'bg-cobalt' },
+  { name: 'blue', className: 'bg-sky-soft' },
   { name: 'jeans', className: 'bg-denim' },
   { name: 'the pants', className: 'stripes-bold' },
 ]

@@ -326,7 +326,7 @@ function Wardrobe() {
           black, white, blue &amp; jeans. <em className="text-cobalt">that&apos;s it.</em>
         </h3>
         <p className="max-w-[16rem] font-hand text-2xl leading-tight text-cobalt">
-          the striped one is my favorite pants. AND, my bedsheets match too!
+          the striped one is my favorite pants. my bedsheets matches them too!
         </p>
       </div>
     </div>
