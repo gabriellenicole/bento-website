@@ -82,10 +82,7 @@ export function People() {
               the part i actually care about
             </p>
             <h2 className="font-serif text-5xl leading-[1.05] sm:text-6xl">
-              i love people, and the way they think.{' '}
-              <em className="text-sky-stripe">
-                i hope i&apos;m building a life i dance around the kitchen in.
-              </em>
+              i love people, <em className="text-sky-stripe">and the way they think.</em>
             </h2>
             <p className="max-w-lg text-lg leading-relaxed text-paper/80">
               it amazes me how different someone can be depending on what they&apos;ve been through.
