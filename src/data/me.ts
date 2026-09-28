@@ -1,8 +1,6 @@
 // everything that makes the homepage "gaby" lives here, so it's easy to edit.
 import cafe from '@/assets/cafe.png'
 import sunset from '@/assets/sunset.png'
-import profileFront from '@/assets/profile_front.jpeg'
-import profileBack from '@/assets/profile_back.jpeg'
 
 // the polaroid stack in the hero. add/remove as many as you like.
 // to use a new photo: drop it in src/assets, import it above, and add it here
@@ -15,8 +13,6 @@ export const ik = (file: string, width = 900) =>
 export const heroPhotos: { src: string; caption: string }[] = [
   { src: ik('IMG_7660.JPG', 700), caption: 'hi, it’s me!' },
   { src: ik('IMG_8208.JPG', 700), caption: 'me, with a birdie' },
-  { src: profileFront, caption: 'me, with a smile' },
-  { src: profileBack, caption: 'me again, other side' },
 ]
 
 export type Track = {
